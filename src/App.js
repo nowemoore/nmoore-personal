@@ -65,6 +65,26 @@ function MainPage({ setActiveSection }) {
     return "home";
   }, [getOffsetTop]);
 
+  // Scroll to section on initial load based on URL
+  useEffect(() => {
+    const PATH_TO_SECTION = Object.fromEntries(
+      Object.entries(SECTION_TO_PATH).map(([k, v]) => [v, k])
+    );
+
+    const section = PATH_TO_SECTION[location.pathname];
+    if (section && section !== "home") {
+      setTimeout(() => {
+        const el = document.getElementById(section);
+        if (el) {
+          isNavClickRef.current = true;
+          el.scrollIntoView({ behavior: "instant" });
+          setActiveSection(section);
+          setTimeout(() => { isNavClickRef.current = false; }, 1000);
+        }
+      }, 100);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Handle scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -102,12 +122,10 @@ function MainPage({ setActiveSection }) {
     window.handleNavClick = () => {
       isNavClickRef.current = true;
       
-      // Clear any existing timeout
       if (navClickTimeoutRef.current) {
         clearTimeout(navClickTimeoutRef.current);
       }
       
-      // Always reset the flag after animation completes
       navClickTimeoutRef.current = setTimeout(() => {
         isNavClickRef.current = false;
       }, 1000);

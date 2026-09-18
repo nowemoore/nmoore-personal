@@ -9,7 +9,7 @@ export default function BlogPostTemplate({ title, date, content, backgroundImage
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/takes');
+    navigate('/#projects');
   };
 
   return (

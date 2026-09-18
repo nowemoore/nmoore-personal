@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
-import "./globals.css";   
+import "@phosphor-icons/web/regular";
+import "./globals.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

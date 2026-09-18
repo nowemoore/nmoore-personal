@@ -1,51 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700;900&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Montserrat:wght@300;400;500;600&family=Orienta&display=swap');
 
+/* Light (default) */
 :root {
-  --teal: #4DB6AC;
-  --dark-teal: #005B53;
-  --cream: #F3EADA;
-  --purple-light: #f677d4;
+  --paper: oklch(0.968 0.012 85);
+  --paper-2: oklch(0.938 0.016 85);
+  --ink: oklch(0.245 0.015 60);
+  --ink-2: oklch(0.455 0.014 60);
+  --ink-3: oklch(0.615 0.012 60);
+  --rule: oklch(0.855 0.014 70);
+  --accent: oklch(0.425 0.115 15);
+  --accent-soft: oklch(0.425 0.115 15 / 0.10);
+  --teal: oklch(0.425 0.075 190);
+  --teal-soft: oklch(0.425 0.075 190 / 0.10);
+  --band-opacity: 0.9;
+  --band-overlay: 0.28; /* dark wash over the photo strips */
 
-  --primary-bg: #1a1918;
-  --secondary-bg: #252423;
-  --tertiary-bg: #2f2e2c;
-  --surface-bg: #3a3937;
-  --accent-primary: #51a89f;
-  --accent-secondary: #d440ad;
-  --accent-tertiary: #F3EADA;
-  --component: #8d7e70d5;
-  --text-primary: #e8dfd5;
-  --text-highlight: #51a89f;
-  --text-primary-opaque: rgba(232, 223, 213, 0.4);
-  --text-secondary: #c9bfb3;
-  --text-muted: #a39689;
-  --card-bg: rgba(47, 46, 44, 0.6);
-  --card-border: rgba(77, 182, 172, 0.2);
-  --transition: all 0.3s ease;
-  --primary-color: var(--text-highlight);
-  --secondary-color: var(--accent-secondary);
-  --text-dark-lm: #1a2332;
-  --text-dark-dm: #F3EADA;
+  /* Legacy aliases — the blog stylesheet still reads these. */
+  --primary-bg: var(--paper);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-muted: var(--ink-3);
+  --text-highlight: var(--teal);
+  --card-border: var(--rule);
+  --transition: all 0.18s ease;
 }
 
-[data-theme="light"] {
-  --primary-bg: #F3EADA;
-  --secondary-bg: #e8dcc8;
-  --tertiary-bg: #ddd1b8;
-  --surface-bg: #f5efe3;
-  --accent-primary: #95ddd7;
-  --accent-secondary: #e991ec;
-  --accent-tertiary: #ce0cbe;
-  --component: #344b48cb;
-  --text-primary: #2d2925;
-  --text-highlight:#005B53;
-  --text-primary-opaque: rgba(45, 41, 37, 0.4);
-  --text-secondary: #4a453f;
-  --text-muted: #6b655d;
-  --text-muted-opaque: rgba(107, 101, 93, 0.6);
-  --card-bg: rgba(255, 251, 245, 0.85);
-  --card-border: rgba(0, 91, 83, 0.25);
+[data-theme="dark"] {
+  --paper: oklch(0.216 0.004 60);
+  --paper-2: oklch(0.270 0.004 60);
+  --ink: oklch(0.945 0.004 70);
+  --ink-2: oklch(0.788 0.005 65);
+  --ink-3: oklch(0.628 0.005 60);
+  --rule: oklch(0.356 0.005 60);
+  --accent: oklch(0.615 0.185 345);
+  --accent-soft: oklch(0.615 0.185 345 / 0.18);
+  --teal: oklch(0.715 0.072 188);
+  --teal-soft: oklch(0.715 0.072 188 / 0.14);
+  --band-opacity: 0.55;
+  --band-overlay: 0.3;
 }
 
 * {
@@ -54,71 +46,58 @@
   box-sizing: border-box;
 }
 
+html {
+  /* Whole design is in rem — this scales everything to 85%. */
+  font-size: 85%;
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--primary-bg);
-  color: var(--text-primary);
-  line-height: 1.6;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
   overflow-x: hidden;
-  scrollbar-width: none;
+  scrollbar-width: none; /* Firefox */
 }
 
 *::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome, Safari, Edge */
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', sans-serif;
-  color: var(--text-primary);
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 900;
-}
-
-h2 {
-  font-size: clamp(1rem, 4vw, 3rem);
-  font-weight: 900;
+h1, h2, h3 {
+  font-family: 'Righteous', cursive;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink);
 }
 
 h3 {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-}
-
-h4 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-}
-
-h5 {
-  font-size: 1.1rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
-p {
-  font-family: 'Outfit', sans-serif;
-  color: var(--text-secondary);
-  line-height: 1.2;
-  font-size: 1.2rem;
+  line-height: 1.25;
 }
 
 a {
-  font-family: 'Outfit', sans-serif;
-  color: var(--accent-secondary);
+  color: var(--accent);
   text-decoration: none;
-  transition: var(--transition);
+  transition: color 0.18s ease, opacity 0.18s ease;
 }
 
 a:hover {
-  color: var(--purple-light);
+  opacity: 0.7;
 }
 
 button {
-  font-family: 'Outfit', sans-serif;
-  color: var(--text-primary);
+  font-family: inherit;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

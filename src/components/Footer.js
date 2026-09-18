@@ -1,21 +1,19 @@
 import React from "react";
 import styles from "./components.module.css";
-import signature from "../signature.png";
 
-export default function Footer() {
+import signature from "../signature.png";
+import signaturelm from "../signature-lm.png";
+
+export default function Footer({ dark }) {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerLeft}>
+      <div className={styles.footerInner}>
         <img
-          src={signature}
-          alt="Signature"
+          src={dark ? signature : signaturelm}
+          alt="Nowe Moore"
           className={styles.footerSignature}
         />
-        <p>© 2025</p>
-      </div>
-
-      <div className={styles.footerRight}>
-        <p>London, UK</p>
+        <p className={styles.footerMeta}>© {new Date().getFullYear()} · London, UK</p>
       </div>
     </footer>
   );

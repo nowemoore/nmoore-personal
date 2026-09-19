@@ -43,8 +43,7 @@ export default function Projects() {
         <div className={styles.sectionIntro}>
           <h2 className={styles.sectionTitle}>Projects</h2>
           <p className={styles.sectionLead}>
-            <em>Believe nothing you hear and a half of what you see.</em>{" "}
-            <span className={styles.attribution}>~ E. A. Poe</span>
+            Believe nothing you hear and a half of what you see. ~ E. A. Poe
             <br />
             Research, community work and writing, newest first. Filter by what
             you came for.

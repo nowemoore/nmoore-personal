@@ -23,14 +23,6 @@
   font-size: clamp(1.875rem, 3.6vw, 2.75rem);
 }
 
-.attribution {
-  font-family: 'Orienta', sans-serif;
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
-
 .sectionLead {
   font-size: 1rem;
   line-height: 1.5;
